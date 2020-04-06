@@ -12,13 +12,13 @@ describe('Protractor test', function() {
       element(by.model("second")).sendKeys("7");
       element(by.id("gobutton")).click();
 
-      //expect( element(by.css("h2[class='ng-binding']")).getText()).toBe("10");
-      //element(by.css("h2[class='ng-binding']")).getText().then(function(text){
-        //console.log(text);
-     // });
-     //element(by.repeater("result in memory")).element(by.css("td:nth-child(3)")).getText().then(function(text){
-       //console.log(text);
-     //});
+      expect( element(by.css("h2[class='ng-binding']")).getText()).toBe("10");
+      element(by.css("h2[class='ng-binding']")).getText().then(function(text){
+        console.log(text);
+      });
+     element(by.repeater("result in memory")).element(by.css("td:nth-child(3)")).getText().then(function(text){
+       console.log(text);
+     });
      element.all(by.repeater("result in memory")).each(function(item)
      {
        item.element(by.css("td:nth-child(3)")).getText().then(function(text){
