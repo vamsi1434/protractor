@@ -1,4 +1,6 @@
-describe('practise test',function() {  
+describe('practise test',function() { 
+    var total = 0;
+    
 
     function selectItems(product)
     {
@@ -59,21 +61,58 @@ describe('practise test',function() {
     
    
     
-        element.all(by.css("table > tbody > tr")).each(function(item)
-      {
-            item.element(by.css("h4[class='media-heading'] a")).getText().then(function(text)
-            {
-               
-               
-                item.element(by.css("td:nth-child(3)")).getText().then(function(text)
+        
+       
+            for(rowNum=1;rowNum<=2;rowNum++)
+             {
+               element(by.xpath("/html/body/app-root/app-shop/div/div/div/table/tbody/tr["+rowNum+"]/td[4]/strong")).getText().then(function(text)
                 {
-                    console.log(text);
-                })
                
+               
+                
+                    
+                    console.log(text);
+                    var price=text.split(".");
+                    var a=Number(price[1].trim());
+                    console.log(a);
+                    total = total + a;
+                    console.log(total);
 
-            })
+                  
+                    
+                    
+                })    
+            }
 
-        })
+      
+    
+
+                    element(by.xpath("/html/body/app-root/app-shop/div/div/div/table/tbody/tr[3]/td[5]")).getText().then(function(text)
+                    {
+                        console.log(text);
+                        var b=text.split(".");
+                        var finalprice=Number(b[1].trim());
+                        console.log(finalprice);
+                        if(total==finalprice)
+                        {
+                            console.log("sum of the price  of products is equals to the final price")
+                        }
+                        else
+                        {
+                            console.log("sum of the price  of products is not equals to the final price")
+                        }
+                    
+
+
+                   })
+
+
+
+
+                  
+        
+
+                
   
     })
 })
